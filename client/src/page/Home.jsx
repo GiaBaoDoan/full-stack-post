@@ -59,7 +59,7 @@ const Home = () => {
                 index % 2 == 0 ? "flex-row-reverse" : ""
               } justify-between`}
             >
-              <div className="relative">
+              <div className="relative self-start">
                 <img
                   src={`./upload/${item.img}`}
                   className="w-[400px] rounded "
@@ -74,7 +74,11 @@ const Home = () => {
               <div className="w-[50%] ">
                 <Link className="space-y-10" to={`post/${item.id}`}>
                   <p className="font-bold text-5xl">{item.title}</p>
-                  <p className="text-2xl ">{getText(item.desc)}</p>
+                  <p className="text-2xl ">
+                    {getText(item.desc).length > 1000
+                      ? getText(item.desc).slice(0, 600) + "..."
+                      : getText(item.desc)}
+                  </p>
                   <button className="border font-bold transition-all rounded hover:bg-teal-400 hover:text-white border-teal-400 text-teal-400  p-3">
                     Read more
                   </button>

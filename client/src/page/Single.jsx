@@ -40,8 +40,8 @@ const Single = () => {
     <div className="my-10">
       <div className="flex gap-[40px] ">
         <div className="w-[75%]">
-          <div className="w-full">
-            <img src={`../upload/${post.img}`} alt="" />
+          <div className="">
+            <img className="w-[75%]" src={`../upload/${post.img}`} alt="" />
             <div className="my-4 flex items-center space-x-2 ">
               <img
                 className="h-16 w-16 rounded-full"
@@ -65,10 +65,9 @@ const Single = () => {
               </div>
             </div>
           </div>
-          <div className="content space-y-10 w-full">
+          <div className="content space-y-4 w-full">
             <h1 className="font-bold text-5xl leading-[55px] ">{post.title}</h1>
-
-            <p className="text-2xl leading-[50px]">{getText(post.desc)}</p>
+            <p className="text-2xl">{getText(post.desc)}</p>
           </div>
         </div>
         <div className="">

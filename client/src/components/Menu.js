@@ -47,19 +47,18 @@ const Menu = ({ cat }) => {
     <div>
       {post?.map((item, index) => {
         return (
-          <div className="flex flex-col">
+          <div className="flex flex-col space-y-4">
             <div className="">
+              <p className="font-bold text-xl mb-4">{item.title}</p>
               <img
                 src={`../upload/${item.img}`}
-                className="h-[300px] w-full   rounded "
+                className="h-[300px] w-full rounded "
                 alt=""
               />
             </div>
-
             <div className="">
               <Link className="space-y-10" to={`post/${item.id}`}>
-                <p className="font-bold text-xl">{item.title}</p>
-                <button className="border w-full inline-block font-bold transition-all rounded hover:bg-teal-400 hover:text-white border-teal-400 text-teal-400  p-3">
+                <button className="border  w-full inline-block font-bold transition-all rounded hover:bg-teal-400 hover:text-white border-teal-400 text-teal-400  p-3">
                   Read more
                 </button>
               </Link>

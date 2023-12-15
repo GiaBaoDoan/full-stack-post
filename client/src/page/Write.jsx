@@ -3,15 +3,11 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import moment from "moment";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 const Write = () => {
   const { state, search } = useLocation();
-  const getText = (html) => {
-    const doc = new DOMParser().parseFromString(html, "text/html");
-    return doc.body.textContent;
-  };
+  const navigate = useNavigate();
   const postId = search.split("=")[1];
-  const { id } = JSON.parse(localStorage.getItem("user"));
   const [value, setValue] = useState(state?.desc || "");
   const [title, setTitle] = useState(state?.title || "");
   const [file, setFile] = useState(null);
@@ -22,7 +18,6 @@ const Write = () => {
       const formData = new FormData();
       formData.append("file", file);
       const res = await axios.post("/upload", formData);
-      console.log(res.data);
       return res.data;
     } catch (err) {
       console.log(err);
@@ -47,6 +42,7 @@ const Write = () => {
             date: date.format("YYYY-MM-DD"),
             cat: cat,
           });
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
@@ -97,7 +93,6 @@ const Write = () => {
               Save as a draft
             </button>
             <button
-              type="button"
               onClick={handelOnclik}
               className="bg-teal-600 text-white font-medi p-2"
             >
